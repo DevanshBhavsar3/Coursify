@@ -9,7 +9,7 @@ const Footer = () => {
     <div className="font-primary bg-primary text-white flex justify-between items-center p-5">
       &copy; 2025 Courisfy
       <Link
-        to="https://github.com/DevanshBhavsar3/Coursify"
+        to="https://github.com/DevanshBhavsar3/Coursify.git"
         target="_blank"
         className="flex justify-center items-center gap-3 p-3 rounded-md"
       >
