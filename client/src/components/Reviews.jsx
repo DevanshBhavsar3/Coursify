@@ -3,7 +3,7 @@ import Profile from "./Profile";
 
 const Reviews = () => {
   return (
-    <div className="font-primary flex flex-col justify-center items-center gap-2 ">
+    <div className="flex flex-col justify-center items-center gap-2 ">
       <p className="text-md font-medium self-start">
         Join Our Community of Learners.
       </p>

@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const Explore = () => {
   return (
-    <div className="font-primary flex flex-col justify-center items-center gap-2">
+    <div className="flex flex-col justify-center items-center gap-2">
       <p className="text-md font-medium self-start">Explore Courses</p>
       <div className="flex flex-wrap justify-center items-center gap-3">
         <Card

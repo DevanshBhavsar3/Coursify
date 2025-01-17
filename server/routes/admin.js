@@ -8,10 +8,31 @@ const adminMiddleware = require("../middleware/admin");
 
 const router = Router();
 
-router.post("/signup", async (req, res) => {
+router.post("/register", async (req, res) => {
   const requiredBody = z.object({
-    username: z.string().min(3),
-    password: z.string().min(5),
+    username: z
+      .string()
+      .min(3)
+      .max(100)
+      .refine((username) => !RegExp("[^a-zA-Z0-9_]").test(username), {
+        message: "Username must not contain any special characters.",
+      }),
+    password: z
+      .string()
+      .min(5)
+      .max(30)
+      .refine((password) => /[A-Z]+/.test(password), {
+        message: "Password must contain 1 capital character.",
+      })
+      .refine((password) => /[a-z]+/.test(password), {
+        message: "Password must contain 1 lowercase character.",
+      })
+      .refine((password) => /[0-9]+/.test(password), {
+        message: "Password must contain 1 number.",
+      })
+      .refine((password) => /[!#$^"&@_/]+/.test(password), {
+        message: "Password must contain 1 special character.",
+      }),
   });
 
   const parsedBody = requiredBody.safeParse(req.body);
@@ -31,7 +52,7 @@ router.post("/signup", async (req, res) => {
       message: "Admin created successfully",
     });
   } catch (e) {
-    res.status(500).json({ error: "Failed to Sign up." });
+    res.status(400).json({ error: "Username already exists." });
   }
 });
 
@@ -41,6 +62,10 @@ router.post("/login", async (req, res) => {
 
   if (!username || !password) {
     return res.status(400).json({ error: "Invalid Credentials." });
+  }
+
+  if (req.cookies["token"]) {
+    return res.status(400).json({ error: "Please log out first." });
   }
 
   const admin = await Admin.findOne({ username });
@@ -58,6 +83,8 @@ router.post("/login", async (req, res) => {
       },
       JWT_ADMIN_SECRET
     );
+
+    res.cookie("token", token);
 
     res.status(200).json({
       message: "Logged in successfully",

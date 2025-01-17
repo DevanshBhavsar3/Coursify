@@ -5,6 +5,8 @@ import "./styles.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <div className="font-primary">
+      <App />
+    </div>
   </StrictMode>
 );
