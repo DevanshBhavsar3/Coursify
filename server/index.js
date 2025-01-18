@@ -39,13 +39,7 @@ async function main() {
 
   app.get("/logout", (req, res) => {
     if (req.cookies["token"]) {
-      res.clearCookie("token", {
-        sameSite: "none",
-        secure: true,
-        httpOnly: true,
-        domain: "https://coursify-sage.vercel.app",
-        path: "/",
-      });
+      res.clearCookie("token");
 
       return res.json({ message: "Logged out." });
     }

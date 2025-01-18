@@ -68,10 +68,6 @@ router.post("/login", async (req, res) => {
     return res.status(400).json({ error: "Invalid Credentials." });
   }
 
-  if (req.cookies["token"]) {
-    return res.status(400).json({ error: "Please log out first." });
-  }
-
   const user = await User.findOne({ username });
 
   if (user) {
