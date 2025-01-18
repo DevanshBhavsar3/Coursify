@@ -88,7 +88,11 @@ router.post("/login", async (req, res) => {
       JWT_USER_SECRET
     );
 
-    res.cookie("token", token);
+    res.cookie("token", token, {
+      sameSite: "none",
+      secure: true,
+      httpOnly: true,
+    });
 
     res.status(200).json({
       message: "Logged in successfully",
