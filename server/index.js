@@ -38,7 +38,7 @@ async function main() {
   app.use("/users", usersRoute);
 
   app.get("/logout", (req, res) => {
-    if (req.cookies.token) {
+    if (req.cookies["token"]) {
       res.clearCookie("token", {
         sameSite: "none",
         secure: true,
