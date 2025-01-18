@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 const NotFound = () => {
   const userType = localStorage.getItem("userType");
 
-  const navbarLinks = document.cookie.includes("token")
+  const navbarLinks = userType
     ? [
         {
           to: "/" + userType + "/courses",

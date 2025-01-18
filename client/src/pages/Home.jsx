@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 const Home = () => {
   const userType = localStorage.getItem("userType");
 
-  const navbarLinks = document.cookie.includes("token")
+  const navbarLinks = userType
     ? [
         {
           to: "/" + userType + "/courses",
