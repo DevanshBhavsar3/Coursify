@@ -92,6 +92,8 @@ router.post("/login", async (req, res) => {
       sameSite: "none",
       secure: true,
       httpOnly: true,
+      domain: "https://coursify-sage.vercel.app",
+      path: "/",
     });
 
     res.status(200).json({
