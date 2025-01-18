@@ -97,9 +97,9 @@ router.post("/login", async (req, res) => {
 
 router.post("/courses", adminMiddleware, async (req, res) => {
   const requestedBody = z.object({
-    title: z.string(),
-    description: z.string(),
-    price: z.number(),
+    title: z.string().min(3).max(30),
+    description: z.string().min(3).max(100),
+    price: z.number().min(100).max(10000),
     imageLink: z.string().url(),
     published: z.boolean(),
   });
@@ -130,9 +130,9 @@ router.post("/courses", adminMiddleware, async (req, res) => {
 
 router.put("/courses/:courseId", adminMiddleware, async (req, res) => {
   const requestedBody = z.object({
-    title: z.string(),
-    description: z.string(),
-    price: z.number(),
+    title: z.string().min(3).max(30),
+    description: z.string().min(3).max(100),
+    price: z.number().min(100).max(10000),
     imageLink: z.string().url(),
     published: z.boolean(),
   });
@@ -173,7 +173,9 @@ router.put("/courses/:courseId", adminMiddleware, async (req, res) => {
 router.get("/courses", adminMiddleware, async (req, res) => {
   const adminId = req.userId;
 
-  const courses = await Course.find({ creatorId: adminId });
+  const courses = await Course.find({ creatorId: adminId })
+    .populate("creatorId", "username")
+    .exec();
 
   res.status(200).json({ courses });
 });

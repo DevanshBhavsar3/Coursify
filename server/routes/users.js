@@ -100,7 +100,9 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/courses", userMiddleware, async (req, res) => {
-  const courses = await Course.find({});
+  const courses = await Course.find({ published: true })
+    .populate("creatorId", "username")
+    .exec();
 
   res.status(200).json({ courses });
 });
@@ -119,7 +121,7 @@ router.post("/courses/:courseId", userMiddleware, async (req, res) => {
       });
 
       res.status(200).json({
-        message: "Course purchased successfully",
+        message: "Course purchased successfully.",
       });
     } else {
       res.status(200).json({ message: "Course already purchased." });
@@ -132,7 +134,17 @@ router.post("/courses/:courseId", userMiddleware, async (req, res) => {
 router.get("/purchasedCourses", userMiddleware, async (req, res) => {
   const userId = req.userId;
 
-  const user = await User.findById(userId).populate("purchasedCourses").exec();
+  const user = await User.findById(userId)
+    .populate("purchasedCourses")
+    .populate({
+      path: "purchasedCourses",
+      populate: {
+        path: "creatorId",
+        select: "username",
+      },
+    })
+    .exec();
+
   const purchasedCourses = user.purchasedCourses;
 
   res.status(200).json({ purchasedCourses });

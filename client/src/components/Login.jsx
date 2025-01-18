@@ -38,7 +38,8 @@ const Login = () => {
         }
       );
 
-      navigate("/courses");
+      localStorage.setItem("userType", userType);
+      navigate("/" + userType + "/courses");
     } catch (e) {
       setError(e.response.data.error);
     }

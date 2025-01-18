@@ -21,7 +21,7 @@ const courseSchema = new mongoose.Schema({
   price: Number,
   imageLink: String,
   published: Boolean,
-  creatorId: mongoose.Types.ObjectId,
+  creatorId: { type: mongoose.Types.ObjectId, ref: "Admin" },
 });
 
 // Define mongoose models
