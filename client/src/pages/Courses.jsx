@@ -185,7 +185,10 @@ const Courses = () => {
   async function handlePurchase(course) {
     try {
       const response = await axios.post(
-        "https://coursify-backend-chi.vercel.app/" + course._id,
+        "https://coursify-backend-chi.vercel.app" +
+          location.pathname +
+          "/" +
+          course._id,
         {},
         { withCredentials: true }
       );
