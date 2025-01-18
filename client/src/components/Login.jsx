@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { data, Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 // Icons
 import { LuBook } from "react-icons/lu";

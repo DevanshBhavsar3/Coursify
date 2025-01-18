@@ -5,6 +5,8 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Courses from "./pages/Courses";
 import Purchases from "./pages/Purchases";
+import Logout from "./pages/Logout";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -12,13 +14,23 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/users/register" element={<Register />} />
-          <Route path="/admin/register" element={<Register />} />
-          <Route path="/users/login" element={<Login />} />
-          <Route path="/admin/login" element={<Login />} />
-          <Route path="/users/courses" element={<Courses />} />
-          <Route path="/admin/courses" element={<Courses />} />
-          <Route path="/users/purchasedCourses" element={<Purchases />} />
+
+          <Route path="/users">
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            <Route path="courses" element={<Courses />} />
+            <Route path="purchasedCourses" element={<Purchases />} />
+          </Route>
+
+          <Route path="/admin">
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            <Route path="courses" element={<Courses />} />
+          </Route>
+
+          <Route path="/logout" element={<Logout />} />
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>

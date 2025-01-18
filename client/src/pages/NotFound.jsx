@@ -1,13 +1,7 @@
 import React from "react";
-
 import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Explore from "../components/Explore";
-import Reviews from "../components/Reviews";
-import BecomeSeller from "../components/BecomeSeller";
-import Footer from "../components/Footer";
 
-const Home = () => {
+const NotFound = () => {
   const userType = localStorage.getItem("userType");
 
   const navbarLinks = document.cookie.includes("token")
@@ -37,17 +31,11 @@ const Home = () => {
       ];
 
   return (
-    <>
-      <div className="mx-3 md:mx-32 flex flex-col justify-center items-center gap-20">
-        <Navbar links={navbarLinks} />
-        <Hero />
-        <Explore />
-        <Reviews />
-        <BecomeSeller />
-      </div>
-      <Footer />
-    </>
+    <div className="h-screen w-screen flex justify-center items-center">
+      <Navbar links={navbarLinks} />
+      <p className="text-lg font-semibold text-center">404 Not found</p>
+    </div>
   );
 };
 
-export default Home;
+export default NotFound;

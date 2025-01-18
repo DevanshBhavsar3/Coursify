@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import CourseCard from "../components/CourseCard";
 
 // Icons
-import { IoIosInformationCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router";
 
 const Purchases = () => {
@@ -34,7 +33,6 @@ const Purchases = () => {
 
   return (
     <div className="flex flex-col gap-10 px-10 sm:px-20">
-      {/* TODO */}
       <Navbar
         links={[
           {

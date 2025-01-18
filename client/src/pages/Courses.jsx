@@ -341,7 +341,7 @@ const Courses = () => {
           </div>
         )}
         <div
-          className={`flex flex-col gap-10 px-10 sm:px-20 ${
+          className={`flex flex-col gap-10 px-10 mb-10 sm:px-20 ${
             inputPopupVisibility && "pointer-events-none select-none"
           }`}
         >
@@ -385,7 +385,7 @@ const Courses = () => {
     );
   } else {
     return (
-      <div className="flex flex-col gap-10 px-10 sm:px-20">
+      <div className="flex flex-col gap-10 px-10 mb-10 sm:px-20">
         {message && (
           <span className="fixed text-sm left-5 bottom-5 bg-primary text-white p-2 rounded-md flex items-center justify-center gap-2">
             <IoIosInformationCircleOutline className="text-base" />
