@@ -65,13 +65,9 @@ const Courses = () => {
 
     try {
       axios
-        .get(
-          "https://coursify-backend-8frn3v0sl-devanshs-projects-42de0e47.vercel.app" +
-            location.pathname,
-          {
-            withCredentials: true,
-          }
-        )
+        .get("https://coursify-backend-chi.vercel.app/" + location.pathname, {
+          withCredentials: true,
+        })
         .then((response) => {
           setCourses(response.data.courses);
         });
@@ -131,8 +127,7 @@ const Courses = () => {
 
     try {
       const response = await axios.post(
-        "https://coursify-backend-8frn3v0sl-devanshs-projects-42de0e47.vercel.app" +
-          location.pathname,
+        "https://coursify-backend-chi.vercel.app/" + location.pathname,
         {
           title,
           description,
@@ -162,7 +157,7 @@ const Courses = () => {
 
     try {
       const response = await axios.put(
-        "https://coursify-backend-8frn3v0sl-devanshs-projects-42de0e47.vercel.app" +
+        "https://coursify-backend-chi.vercel.app/" +
           location.pathname +
           "/" +
           editingCourseId,
@@ -190,8 +185,7 @@ const Courses = () => {
   async function handlePurchase(course) {
     try {
       const response = await axios.post(
-        "https://coursify-backend-8frn3v0sl-devanshs-projects-42de0e47.vercel.app" +
-          course._id,
+        "https://coursify-backend-chi.vercel.app/" + course._id,
         {},
         { withCredentials: true }
       );
