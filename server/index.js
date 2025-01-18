@@ -15,8 +15,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin:
-      "https://coursify-backend-8frn3v0sl-devanshs-projects-42de0e47.vercel.app/",
+    origin: "https://coursify-sage.vercel.app/",
   })
 );
 
