@@ -37,6 +37,14 @@ async function main() {
   // User routes
   app.use("/users", usersRoute);
 
+  app.get("/logout", (req, res) => {
+    if (req.cookies["token"]) {
+      res.clearCookie("token");
+      return res.json({ message: "Logged out." });
+    }
+    return res.json({ error: "Not logged in." });
+  });
+
   app.listen(port, () => {
     console.log("Server is listening on port 3000");
   });

@@ -1,10 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import axios from "axios";
 
 const Logout = () => {
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
-    localStorage.removeItem("userType");
+    try {
+      axios
+        .get("https://coursify-backend-chi.vercel.app/logout", {
+          withCredentials: true,
+        })
+        .then((response) => {
+          localStorage.removeItem("userType");
+          setMessage(response.data.message);
+        });
+    } catch (e) {
+      setMessage(e.response.data.error);
+    }
   }, []);
 
   return (
@@ -24,7 +37,7 @@ const Logout = () => {
         ]}
       />
 
-      <p className="text-md font-medium text-center">You are Logged out.</p>
+      <p className="text-md font-medium text-center">{message}</p>
     </div>
   );
 };
