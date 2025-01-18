@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 const Logout = () => {
   useEffect(() => {
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+    localStorage.removeItem("userType");
   }, []);
 
   return (
