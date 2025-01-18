@@ -185,7 +185,7 @@ const Courses = () => {
   async function handlePurchase(course) {
     try {
       const response = await axios.post(
-        "https://coursify-backend-chi.vercel.app" + course._id,
+        "https://coursify-backend-chi.vercel.app/" + course._id,
         {},
         { withCredentials: true }
       );
@@ -217,7 +217,7 @@ const Courses = () => {
       <>
         {inputPopupVisibility && (
           <div className="z-20 absolute w-screen h-screen bg-black/30">
-            <div className="bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-5 rounded-sm">
+            <div className="bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-5 rounded-sm w-11/12 sm:w-1/2">
               <div className="flex justify-between items-center mb-10">
                 <p className="text-md">
                   {isEditing ? "Update Course" : "Add Course"}
