@@ -12,7 +12,13 @@ const port = process.env.PORT;
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(
+  cors({
+    credentials: true,
+    origin:
+      "https://coursify-backend-8frn3v0sl-devanshs-projects-42de0e47.vercel.app/",
+  })
+);
 
 async function main() {
   // Connect to MongoDB

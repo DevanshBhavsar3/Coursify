@@ -29,10 +29,14 @@ const Register = () => {
     }
 
     try {
-      await axios.post("http://localhost:3000" + window.location.pathname, {
-        username,
-        password,
-      });
+      await axios.post(
+        "https://coursify-backend-8frn3v0sl-devanshs-projects-42de0e47.vercel.app" +
+          window.location.pathname,
+        {
+          username,
+          password,
+        }
+      );
 
       navigate("/" + userType + "/login");
     } catch (e) {
