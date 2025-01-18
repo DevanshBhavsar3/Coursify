@@ -20,7 +20,7 @@ const Purchases = () => {
 
     try {
       axios
-        .get("https://coursify-backend-chi.vercel.app/" + location.pathname, {
+        .get("https://coursify-backend-chi.vercel.app" + location.pathname, {
           withCredentials: true,
         })
         .then((response) => {

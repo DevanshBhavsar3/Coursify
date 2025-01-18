@@ -27,7 +27,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://coursify-backend-chi.vercel.app/" + window.location.pathname,
+        "https://coursify-backend-chi.vercel.app" + window.location.pathname,
         {},
         {
           withCredentials: true,

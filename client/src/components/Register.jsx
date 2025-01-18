@@ -30,7 +30,7 @@ const Register = () => {
 
     try {
       await axios.post(
-        "https://coursify-backend-chi.vercel.app/" + window.location.pathname,
+        "https://coursify-backend-chi.vercel.app" + window.location.pathname,
         {
           username,
           password,
