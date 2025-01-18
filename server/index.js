@@ -39,7 +39,11 @@ async function main() {
 
   app.get("/logout", (req, res) => {
     if (req.cookies["token"]) {
-      res.clearCookie("token");
+      res.clearCookie("token", {
+        sameSite: "none",
+        secure: true,
+        httpOnly: true,
+      });
       return res.json({ message: "Logged out." });
     }
     return res.json({ error: "Not logged in." });
