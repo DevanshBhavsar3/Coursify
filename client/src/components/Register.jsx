@@ -30,14 +30,18 @@ const Register = () => {
 
     try {
       await axios.post(
-        "https://coursify-backend-chi.vercel.app" + window.location.pathname,
+        import.meta.env.VITE_BACKEND_URL + window.location.pathname,
         {
           username,
           password,
+        },
+        {
+          withCredentials: true,
         }
       );
 
-      navigate("/" + userType + "/login");
+      localStorage.setItem("userType", userType);
+      navigate("/" + userType + "/courses");
     } catch (e) {
       setInvalidUsername(e.response.data.error);
     }

@@ -12,7 +12,7 @@ const CourseCard = ({
   return (
     <div className="border-2 border-black/10 rounded-md w-72 h-72 flex flex-col justify-end overflow-hidden">
       <div className="h-full w-full border-b-2 bg-slate-200 border-black/10 flex justify-center items-center">
-        <img src="/thumbnail.svg" alt="thumbnail" className="h-36 w-full" />
+        <img src={imageURL} alt="thumbnail" className="h-40 w-full" />
       </div>
       <div className="p-2">
         <div className="flex justify-between">

@@ -46,14 +46,28 @@ router.post("/register", async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 7);
 
-    await User.create({
+    const user = await User.create({
       username,
       password: hashedPassword,
       purchasedCourses: [],
     });
 
+    const token = jwt.sign(
+      {
+        userId: user._id,
+      },
+      JWT_USER_SECRET
+    );
+
+    res.cookie("token", token, {
+      sameSite: "none",
+      secure: true,
+      httpOnly: true,
+    });
+
     res.status(201).json({
       message: "User created successfully",
+      token,
     });
   } catch (e) {
     res.status(400).json({ error: "Username already exists." });
@@ -66,6 +80,10 @@ router.post("/login", async (req, res) => {
 
   if (!username || !password) {
     return res.status(400).json({ error: "Invalid Credentials." });
+  }
+
+  if (req.cookies["token"]) {
+    return res.status(400).json({ error: "Please logout first." });
   }
 
   const user = await User.findOne({ username });

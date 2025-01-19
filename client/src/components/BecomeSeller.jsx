@@ -7,7 +7,7 @@ const BecomeSeller = () => {
       <div className="font-medium flex flex-col items-start justify-center">
         <p className="text-lg mb-5">Want to become a seller?</p>
         <p className="text-base mb-2">
-          Join the Coursify Community of Expert Instructors and{" "}
+          Join the Coursify Community of Expert Instructors and
           <br className="hidden lg:block" /> connect with a network of talented
           educators
         </p>

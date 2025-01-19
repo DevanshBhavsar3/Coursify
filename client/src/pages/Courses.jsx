@@ -65,7 +65,7 @@ const Courses = () => {
 
     try {
       axios
-        .get("https://coursify-backend-chi.vercel.app" + location.pathname, {
+        .get(import.meta.env.VITE_BACKEND_URL + location.pathname, {
           withCredentials: true,
         })
         .then((response) => {
@@ -127,7 +127,7 @@ const Courses = () => {
 
     try {
       const response = await axios.post(
-        "https://coursify-backend-chi.vercel.app" + location.pathname,
+        import.meta.env.VITE_BACKEND_URL + location.pathname,
         {
           title,
           description,
@@ -157,7 +157,7 @@ const Courses = () => {
 
     try {
       const response = await axios.put(
-        "https://coursify-backend-chi.vercel.app" +
+        import.meta.env.VITE_BACKEND_URL +
           location.pathname +
           "/" +
           editingCourseId,
@@ -185,10 +185,7 @@ const Courses = () => {
   async function handlePurchase(course) {
     try {
       const response = await axios.post(
-        "https://coursify-backend-chi.vercel.app" +
-          location.pathname +
-          "/" +
-          course._id,
+        import.meta.env.VITE_BACKEND_URL + location.pathname + "/" + course._id,
         {},
         { withCredentials: true }
       );

@@ -4,7 +4,8 @@ import Navbar from "../components/Navbar";
 import CourseCard from "../components/CourseCard";
 
 // Icons
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 const Purchases = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Purchases = () => {
 
     try {
       axios
-        .get("https://coursify-backend-chi.vercel.app" + location.pathname, {
+        .get(import.meta.env.VITE_BACKEND_URL + location.pathname, {
           withCredentials: true,
         })
         .then((response) => {
@@ -32,7 +33,7 @@ const Purchases = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-10 px-10 sm:px-20">
+    <div className="flex flex-col px-10 sm:px-20">
       <Navbar
         links={[
           {
@@ -47,7 +48,14 @@ const Purchases = () => {
           },
         ]}
       />
-      <p className="text-lg font-semibold tracking-tight mt-24">
+      <Link
+        to={"/users/courses"}
+        className="flex items-center justify-start gap-3 top-3 left-3 mt-24"
+      >
+        <FaArrowLeftLong />
+        <p className="text-base">All Courses</p>
+      </Link>
+      <p className="text-lg font-semibold tracking-tight mb-10">
         Your Purchases
       </p>
       <div className="flex flex-wrap justify-center sm:justify-start items-center gap-3">
